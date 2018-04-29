@@ -14,8 +14,6 @@ int main()
 
     list.traverse();
 
-    list.removeHead();
-
     std::cout << '\n';
     list.traverse();
 
