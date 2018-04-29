@@ -30,16 +30,16 @@ public:
     SinglyList &operator=(SinglyList &&) = default;
 
     void push_back(T value);
-    std::unique_ptr<Node> pop_back();
+    void pop_back();
 
     void push_front(T value);
-    std::unique_ptr<Node> pop_front();
+    void pop_front();
 
     void traverse() const;
 
 private:
-    std::unique_ptr<Node> make_unique_ptr_to_node();
-    std::unique_ptr<Node> make_unique_ptr_to_node(T value);
+    std::unique_ptr<Node> make_unique_ptr_to_node() const;
+    std::unique_ptr<Node> make_unique_ptr_to_node(T value) const;
 };
 
 template <class T>
@@ -64,7 +64,7 @@ void SinglyList<T>::push_back(T value)
 }
 
 template<class T>
-std::unique_ptr<typename SinglyList<T>::Node> SinglyList<T>::pop_back()
+void SinglyList<T>::pop_back()
 {
 
 }
@@ -83,11 +83,19 @@ void SinglyList<T>::push_front(T value)
     head = std::move(new_head);
 }
 
+template<class T>
+void SinglyList<T>::pop_front()
+{
+    if(head)
+    {
+       head = std::move(head->next);
+    }
+}
+
 template <class T>
 void SinglyList<T>::traverse() const
 {
     auto *temp = head.get();
-
     while (temp)
     {
         std::cout << temp->data << ' ' << std::endl;
@@ -96,13 +104,13 @@ void SinglyList<T>::traverse() const
 }
 
 template <class T>
-std::unique_ptr<typename SinglyList<T>::Node> SinglyList<T>::make_unique_ptr_to_node()
+std::unique_ptr<typename SinglyList<T>::Node> SinglyList<T>::make_unique_ptr_to_node() const
 {
     return std::make_unique<typename SinglyList<T>::Node>();
 }
 
 template <class T>
-std::unique_ptr<typename SinglyList<T>::Node> SinglyList<T>::make_unique_ptr_to_node(T value)
+std::unique_ptr<typename SinglyList<T>::Node> SinglyList<T>::make_unique_ptr_to_node(T value) const
 {
     return std::make_unique<typename SinglyList<T>::Node>(value);
 }

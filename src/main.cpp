@@ -16,6 +16,12 @@ int main()
     std::cout << "\n";
 
     list.push_front(-32);
+    list.push_front(-143);
+
+    list.traverse();
+    std::cout << "\n";
+
+    list.pop_front();
 
     list.traverse();
     std::cout << "\n";
