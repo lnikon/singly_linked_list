@@ -13,9 +13,10 @@ int main()
     list.push_back(52);
 
     list.traverse();
+    std::cout << "\n";
 
-    std::cout << '\n';
-    list.traverse();
+    SinglyList<int> list1(std::move(list));
+    list1.traverse();
 
     return 0;
 }

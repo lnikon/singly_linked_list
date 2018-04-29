@@ -23,8 +23,8 @@ public:
     SinglyList(const SinglyList &) = delete;
     SinglyList &operator=(const SinglyList &) = delete;
 
-    SinglyList(SinglyList &&);
-    SinglyList &operator=(SinglyList &&);
+    SinglyList(SinglyList &&) = default;
+    SinglyList &operator=(SinglyList &&) = default;
 
     void push_back(T value);
     std::unique_ptr<Node> pop_back();
@@ -37,22 +37,6 @@ public:
 private:
     std::unique_ptr<Node> make_unique_ptr_to_node();
 };
-
-template <class T>
-SinglyList<T>::SinglyList(SinglyList &&other)
-{
-    head->reset(other.head);
-}
-
-template <class T>
-SinglyList<T> &SinglyList<T>::operator=(SinglyList &&other)
-{
-    if (other != *this)
-    {
-        head->reset(other.head);
-    }
-    return *this;
-}
 
 template <class T>
 void SinglyList<T>::push_back(T value)
