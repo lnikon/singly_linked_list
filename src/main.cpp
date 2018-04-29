@@ -5,27 +5,19 @@
 
 int main()
 {
-    SinglyList<int> list1;
-    
-    // SinglyList<int>::Iterator it = list1.begin();
-    list1.push_back(3);
-    list1.push_back(98);
-    list1.push_back(-1);
+    SinglyList<int> list;
+    list.push_back(2);
+    list.push_back(12);
+    list.push_back(22);
+    list.push_back(23);
+    list.push_back(52);
 
-    std::cout << "traversing list1:\n";
-    list1.traverse();
+    list.traverse();
 
-    // std::cout << "traversing list2:\n";
-    // SinglyList<int> list2 = list1;
-    // list2.traverse();
-    
-    // auto head = list2.front();
-    
-    // std::cout << head.data << std::endl;
-    // list2.removeHead();
-    
-    // head = list2.front();
-    // std::cout << head.data << std::endl;
-    
+    list.removeHead();
+
+    std::cout << '\n';
+    list.traverse();
+
     return 0;
 }
