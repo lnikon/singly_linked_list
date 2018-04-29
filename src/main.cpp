@@ -15,8 +15,10 @@ int main()
     list.traverse();
     std::cout << "\n";
 
-    SinglyList<int> list1(std::move(list));
-    list1.traverse();
+    list.push_front(-32);
+
+    list.traverse();
+    std::cout << "\n";
 
     return 0;
 }
