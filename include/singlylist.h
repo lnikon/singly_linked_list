@@ -29,7 +29,7 @@ class SinglyList
     SinglyList &operator=(SinglyList &&);
 
     void push_back(T value);
-    Node getHead();
+    Node front();
     void removeHead();
     void traverse() const;
 
@@ -107,7 +107,7 @@ void SinglyList<T>::push_back(T value)
 }
 
 template <class T>
-typename SinglyList<T>::Node SinglyList<T>::getHead()
+typename SinglyList<T>::Node SinglyList<T>::front()
 {
     if (head)
     {

@@ -19,12 +19,12 @@ int main()
     // SinglyList<int> list2 = list1;
     // list2.traverse();
     
-    // auto head = list2.getHead();
+    // auto head = list2.front();
     
     // std::cout << head.data << std::endl;
     // list2.removeHead();
     
-    // head = list2.getHead();
+    // head = list2.front();
     // std::cout << head.data << std::endl;
     
     return 0;
