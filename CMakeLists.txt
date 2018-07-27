@@ -13,7 +13,7 @@ include_directories(${LIB_LOCAL})
 file(GLOB SOURCES "src/*.cpp")
 file(GLOB INCLUDES "include/*.h")
 
-add_executable(trie ${SOURCES} ${INCLUDES})
+add_executable(btrie ${SOURCES} ${INCLUDES})
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})

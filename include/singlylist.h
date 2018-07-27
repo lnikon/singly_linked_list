@@ -10,7 +10,7 @@ class SinglyList
 private:
     struct Node
     {
-        T data;
+        T data = T();
         std::unique_ptr<Node> next {nullptr};
 
         Node() = default;
@@ -34,6 +34,8 @@ public:
 
     void push_front(T value);
     void pop_front();
+
+    void insert();
 
     void traverse() const;
 
@@ -77,7 +79,6 @@ void SinglyList<T>::push_front(T value)
         push_back(value);
     }
 
-    // Yeah, this is fucked shit!
     auto new_head = make_unique_ptr_to_node(value);
     new_head->next = std::move(head);
     head = std::move(new_head);
