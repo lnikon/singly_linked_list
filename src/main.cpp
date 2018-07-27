@@ -15,13 +15,11 @@ int main()
     list.traverse();
     std::cout << "\n";
 
-    list.push_front(-32);
-    list.push_front(-143);
+    auto node = list.pop_front();
+    if (node) {
+        std::cout << node->data << std::endl << std::endl << std::endl;
+    }
 
-    list.traverse();
-    std::cout << "\n";
-
-    list.pop_front();
 
     list.traverse();
     std::cout << "\n";

@@ -11,13 +11,13 @@ private:
     struct Node
     {
         T data = T();
-        std::unique_ptr<Node> next {nullptr};
+        std::unique_ptr<Node> next{ nullptr };
 
         Node() = default;
-        Node(T _data): data(_data) {}
+        Node(T _data) : data(_data) {}
     };
 
-    std::unique_ptr<Node> head {nullptr};
+    std::unique_ptr<Node> head{ nullptr };
 
 public:
     SinglyList() = default;
@@ -33,8 +33,8 @@ public:
     void pop_back();
 
     void push_front(T value);
-    void pop_front();
-
+    std::unique_ptr<Node> pop_front();
+    void traverse() const;
     void insert();
 
 private:
@@ -70,7 +70,7 @@ void SinglyList<T>::pop_back()
 template<class T>
 void SinglyList<T>::push_front(T value)
 {
-    if(head == nullptr)
+    if (head == nullptr)
     {
         push_back(value);
     }
@@ -81,14 +81,16 @@ void SinglyList<T>::push_front(T value)
 }
 
 template<class T>
-void SinglyList<T>::pop_front()
+std::unique_ptr<typename SinglyList<T>::Node> SinglyList<T>::pop_front()
 {
-    if(head)
+    auto temp = make_unique_ptr_to_node();
+    if (head)
     {
-       head = std::move(head->next);
+        temp = std::move(head);
+        head = std::move(temp->next);
     }
+    return temp;
 }
-
 template <class T>
 void SinglyList<T>::insert()
 {
@@ -117,3 +119,16 @@ typename SinglyList<T>::Node* SinglyList<T>::get_tail_ptr() const
     }
     return p;
 }
+
+template <class T>
+void SinglyList<T>::traverse() const
+{
+    Node *temp = head.get();
+
+    while (temp)
+    {
+        std::cout << temp->data << ' ' << std::endl;
+        temp = temp->next.get();
+    }
+}
+
