@@ -37,11 +37,11 @@ public:
 
     void insert();
 
-    void traverse() const;
-
 private:
+    /* Utility functions */
     std::unique_ptr<Node> make_unique_ptr_to_node() const;
     std::unique_ptr<Node> make_unique_ptr_to_node(T value) const;
+    Node* get_tail_ptr() const;
 };
 
 template <class T>
@@ -56,11 +56,7 @@ void SinglyList<T>::push_back(T value)
     }
     else
     {
-        auto *p = head.get();
-        while (p->next != nullptr)
-        {
-            p = p->next.get();
-        }
+        auto *p = get_tail_ptr();
         p->next = std::move(temp);
     }
 }
@@ -94,14 +90,9 @@ void SinglyList<T>::pop_front()
 }
 
 template <class T>
-void SinglyList<T>::traverse() const
+void SinglyList<T>::insert()
 {
-    auto *temp = head.get();
-    while (temp)
-    {
-        std::cout << temp->data << ' ' << std::endl;
-        temp = temp->next.get();
-    }
+
 }
 
 template <class T>
@@ -114,4 +105,15 @@ template <class T>
 std::unique_ptr<typename SinglyList<T>::Node> SinglyList<T>::make_unique_ptr_to_node(T value) const
 {
     return std::make_unique<typename SinglyList<T>::Node>(value);
+}
+
+template <class T>
+typename SinglyList<T>::Node* SinglyList<T>::get_tail_ptr() const
+{
+    auto *p = head.get();
+    while (p->next != nullptr)
+    {
+        p = p->next.get();
+    }
+    return p;
 }
