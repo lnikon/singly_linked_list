@@ -20,6 +20,12 @@ int main()
         std::cout << node->data << std::endl << std::endl << std::endl;
     }
 
+    /*
+     * This code will cause segfault, because
+     * node->next std::move()-d in the pop.front() method
+     *
+     * std::cout << node->next->data << std::endl;
+     * */
 
     list.traverse();
     std::cout << "\n";

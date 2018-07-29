@@ -30,7 +30,11 @@ public:
     SinglyList &operator=(SinglyList &&) = default;
 
     void push_back(T value);
-    void pop_back();
+
+    /*
+     * Don't implemented yet
+     * */
+    void pop_back() = delete;
 
     void push_front(T value);
     std::unique_ptr<Node> pop_front();
@@ -59,12 +63,6 @@ void SinglyList<T>::push_back(T value)
         auto *p = get_tail_ptr();
         p->next = std::move(temp);
     }
-}
-
-template<class T>
-void SinglyList<T>::pop_back()
-{
-
 }
 
 template<class T>
